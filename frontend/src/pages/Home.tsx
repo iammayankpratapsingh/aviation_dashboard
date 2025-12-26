@@ -58,7 +58,7 @@ const generateMockMapData = () => {
   return data;
 };
 
-const generateMockChartData = (year: number) => {
+const generateMockChartData = () => {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   return {
     passengerData: months.map(month => ({
@@ -102,9 +102,13 @@ const Home = () => {
   const [selectedYear, setSelectedYear] = useState(2023);
   const [indicator, setIndicator] = useState<'passengers' | 'revenue' | 'cargo'>('passengers');
 
+  const handleIndicatorChange = (newIndicator: 'passengers' | 'revenue' | 'cargo') => {
+    setIndicator(newIndicator);
+  };
+
   const kpiData = useMemo(() => generateMockKPIData(), []);
   const mapData = useMemo(() => generateMockMapData(), []);
-  const chartData = useMemo(() => generateMockChartData(selectedYear), [selectedYear]);
+  const chartData = useMemo(() => generateMockChartData(), [selectedYear]);
   const insights = useMemo(() => generateMockInsights(selectedYear), [selectedYear]);
 
   const handleYearChange = (year: number) => {
@@ -146,6 +150,7 @@ const Home = () => {
           data={mapData} 
           indicator={indicator}
           onYearChange={handleYearChange}
+          onIndicatorChange={handleIndicatorChange}
         />
       </div>
 

@@ -12,8 +12,7 @@ interface TrendChartsProps {
 const TrendCharts: React.FC<TrendChartsProps> = ({ 
   passengerData, 
   utilizationData, 
-  askRpkData,
-  selectedYear 
+  askRpkData
 }) => {
   return (
     <div className="trend-charts-container">

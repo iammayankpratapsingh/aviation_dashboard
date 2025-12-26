@@ -17,9 +17,10 @@ interface TimeLapseMapProps {
   data: { [year: number]: AirportData[] };
   indicator: 'passengers' | 'revenue' | 'cargo';
   onYearChange?: (year: number) => void;
+  onIndicatorChange?: (indicator: 'passengers' | 'revenue' | 'cargo') => void;
 }
 
-const TimeLapseMap: React.FC<TimeLapseMapProps> = ({ data, indicator, onYearChange }) => {
+const TimeLapseMap: React.FC<TimeLapseMapProps> = ({ data, indicator, onYearChange, onIndicatorChange }) => {
   const [currentYear, setCurrentYear] = useState<number>(2023);
   const [isPlaying, setIsPlaying] = useState(false);
   const [selectedAirport, setSelectedAirport] = useState<AirportData | null>(null);
@@ -153,8 +154,6 @@ const TimeLapseMap: React.FC<TimeLapseMapProps> = ({ data, indicator, onYearChan
             mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN || 'pk.eyJ1IjoiaWFtbWF5YW5rcHJhdGFwc2luZ2giLCJhIjoiY21maHZrOHpuMDQ1ZjJrcXJ5MWtheWRleiJ9.seoT3jNUrxES2GwhXN0XHg'}
             style={{ width: '100%', height: '100%' }}
             mapStyle="mapbox://styles/mapbox/dark-v10"
-            width="100%"
-            height="100%"
           >
           <AnimatePresence>
             {currentData.map((airport) => (
@@ -222,7 +221,10 @@ const TimeLapseMap: React.FC<TimeLapseMapProps> = ({ data, indicator, onYearChan
           <select 
             className="indicator-select"
             value={indicator}
-            onChange={(e) => {/* Handle indicator change */}}
+            onChange={(e) => {
+              const newIndicator = e.target.value as 'passengers' | 'revenue' | 'cargo';
+              onIndicatorChange?.(newIndicator);
+            }}
           >
             <option value="passengers">Passengers</option>
             <option value="revenue">Revenue</option>
