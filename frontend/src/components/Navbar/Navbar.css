@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.navbar.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.nav-menu li {
+  margin: 0;
+}
+
+.nav-menu a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  text-shadow: 0 0 10px rgba(100, 108, 255, 0.3);
+}
+
+.nav-menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #646cff, transparent);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: #646cff;
+  text-shadow: 0 0 15px rgba(100, 108, 255, 0.6), 0 0 30px rgba(100, 108, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.nav-menu a:hover::before {
+  width: 100%;
+}
+
+.nav-menu a.active {
+  color: #646cff;
+  text-shadow: 0 0 20px rgba(100, 108, 255, 0.8), 0 0 40px rgba(100, 108, 255, 0.5);
+  font-weight: 700;
+}
+
+.nav-menu a.active::before {
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #646cff, #86efac, #646cff, transparent);
+  height: 3px;
+  box-shadow: 0 0 10px rgba(100, 108, 255, 0.8);
+}
+

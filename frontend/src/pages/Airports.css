@@ -1,0 +1,15 @@
+.airports-content {
+  text-align: center;
+  max-width: 800px;
+}
+
+.airports-content h2 {
+  font-size: 2.5em;
+  margin-bottom: 1rem;
+}
+
+.airports-content p {
+  font-size: 1.1em;
+  color: rgba(255, 255, 255, 0.8);
+}
+

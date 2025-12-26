@@ -1,0 +1,15 @@
+/* App.css - Main application styles */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-content {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  }
+
+.app-content.fade-in {
+  opacity: 1;
+}
